@@ -20,5 +20,11 @@
 目的：試作 CatchAndLog，其中透過 ILogger 介面送出Log。
 
 ## 結果畫面：CacthAndLog with ILogger
+將 CatchAndLog 套用到多個對象看是否正常。
 
 ![CacthAndLog with ILogger](https://github.com/relyky/AspectInjectorLab/blob/main/doc/CatchAndLog%20with%20ILogger.png)
+
+## 結果畫面：Async Function
+試看看 Async Function 是否也能正常。
+
+![非同步狀況也能正常運轉](https://github.com/relyky/AspectInjectorLab/blob/main/doc/Async%20proceed.png)
