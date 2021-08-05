@@ -26,7 +26,7 @@ namespace ConsoleApp1
             Console.WriteLine("Action go...");
 
             var ret = foo + bar;
-            throw new ApplicationException("測試例外!");
+            //throw new ApplicationException("測試例外!");
 
             Console.WriteLine($"Action result => {foo} + {bar} => {ret}");
 
