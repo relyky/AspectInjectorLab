@@ -24,11 +24,11 @@ namespace Net5ConaoleApp
         /// </summary>
         public void Run(string[] args)
         {
-            Console.WriteLine("Yes, 成功執行了。");
+            Console.WriteLine("Run => Yes, 成功執行了。");
 
             // 測試 services injection
-            Console.WriteLine($"{_config.GetConnectionString("DefaultConnection")}");
-            Console.WriteLine($"{_randSvc.GetRandomGuid()}");
+            Console.WriteLine($"Run => {_config.GetConnectionString("DefaultConnection")}");
+            Console.WriteLine($"Run => {_randSvc.GetRandomGuid()}");
 
             Console.WriteLine("Press any key to continue.");
             Console.ReadKey();

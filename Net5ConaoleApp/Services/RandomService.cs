@@ -24,7 +24,7 @@ namespace Net5ConaoleApp.Services
             _logger.LogWarning("ON:GetRandomGuid...");
 
             // 測試 services injection
-            Console.WriteLine($"{_config["OutputFolder"]}");
+            Console.WriteLine($"Random => {_config["OutputFolder"]}");
 
             return Guid.NewGuid().ToString();        
         }
