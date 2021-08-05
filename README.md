@@ -7,9 +7,18 @@
 # 專案：ConsoleApp1 
 目的：可行性測試。
 
-## 結果畫面
+## 結果畫面：正常狀況下執行順序
+
+![正常狀況下執行順序](https://github.com/relyky/AspectInjectorLab/blob/main/doc/Trace%20normally.png)
+
+## 結果畫面：例外狀況下執行順序
+
+![例外狀況下執行順序](https://github.com/relyky/AspectInjectorLab/blob/main/doc/Trace%20exceptionally.png)
+
 
 # 專案：CatchAndLog 
-目的：試作 CatchAndLog
+目的：試作 CatchAndLog，其中透過 ILogger 介面送出Log。
 
-## 結果畫面
+## 結果畫面：CacthAndLog with ILogger
+
+![CacthAndLog with ILogger](https://github.com/relyky/AspectInjectorLab/blob/main/doc/CatchAndLog%20with%20ILogger.png)
