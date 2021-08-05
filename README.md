@@ -3,3 +3,5 @@
 
 * 有支援 .NET5
 * 基底是 [FluentIL](https://github.com/FluentIL/FluentIL) 
+
+請參考：https://github.com/relyky/AspectInjectorLab/wiki
