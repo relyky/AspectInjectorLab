@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Net5ConaoleApp.AOP;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Net5ConaoleApp.Services
 {
+    [CatchAndLog]
     class RandomService
     {
         readonly IConfiguration _config;
@@ -21,7 +23,7 @@ namespace Net5ConaoleApp.Services
 
         public string GetRandomGuid() 
         {
-            _logger.LogWarning("ON:GetRandomGuid...");
+            _logger.LogWarning("Random => ON:GetRandomGuid...");
 
             // 測試 services injection
             Console.WriteLine($"Random => {_config["OutputFolder"]}");

@@ -27,6 +27,8 @@ namespace Net5ConaoleApp
                 .ConfigureServices(ConfigureServices)
                 .Build();
 
+            AppDomain.CurrentDomain.SetData("App:Host", host);
+
             return host;
         }
 
