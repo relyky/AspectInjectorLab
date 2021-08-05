@@ -9,7 +9,12 @@ namespace Net5ConaoleApp.AOP
     /// </summary>
     public class ServiceActivator
     {
-        internal static IServiceProvider _serviceProvider = null;
+        //internal static IServiceProvider _serviceProvider = null;
+        internal static IServiceProvider _serviceProvider 
+        {
+            get => AppDomain.CurrentDomain.GetData("Host:ServiceProvider") as IServiceProvider;
+            set => AppDomain.CurrentDomain.SetData("Host:ServiceProvider", value);
+        }
 
         /// <summary>
         /// Configure ServiceActivator with full serviceProvider
