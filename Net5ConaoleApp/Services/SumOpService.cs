@@ -10,21 +10,23 @@ using System.Threading.Tasks;
 namespace Net5ConaoleApp.Services
 {
     [CatchAndLog]
-    class RandomService
+    class SumOpService
     {
         readonly IConfiguration _config;
         readonly ILogger<RandomService> _logger;
 
-        public RandomService(IConfiguration config, ILogger<RandomService> logger) 
+        public SumOpService(IConfiguration config, ILogger<RandomService> logger) 
         {
             _config = config;
             _logger = logger;
         }
 
-        public string GetRandomGuid() 
+        public int Sum(int a, int b) 
         {
-            _logger.LogWarning("Random => ON:GetRandomGuid");
-            return Guid.NewGuid().ToString();        
+            int sum = a + b;
+
+            _logger.LogWarning($"[Sum] ({a},{b}) => {sum}");
+            return sum;
         }
     }
 }

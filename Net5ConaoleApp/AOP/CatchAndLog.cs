@@ -11,22 +11,16 @@ using System.Threading.Tasks;
 
 namespace Net5ConaoleApp.AOP
 {
-    //[AttributeUsage(AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Class)]
     [Aspect(Scope.Global)]
     [Injection(typeof(CatchAndLog))]
     public class CatchAndLog : Attribute
     {
-        //public string Title { get; set; } = "xxxx"; /// 似乎無效
-
         readonly ILogger<CatchAndLog> _logger;
 
         public CatchAndLog()
-        {
-            //var foo = ServiceProviderFactory.ServiceProvider.GetServices(typeof(IFoo));
-
-            IHost host = (IHost)AppDomain.CurrentDomain.GetData("App:Host");
-            
-            using (var serviceScope = host.Services.CreateScope())
+        {            
+            using (var serviceScope = ServiceActivator.GetScope())
             {
                 var services = serviceScope.ServiceProvider;
                 _logger = services.GetRequiredService<ILogger<CatchAndLog>>();

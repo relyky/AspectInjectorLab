@@ -12,11 +12,13 @@ namespace Net5ConaoleApp
     {
         readonly IConfiguration _config;
         readonly RandomService _randSvc;
+        readonly SumOpService _sumSvc;
 
-        public App(IConfiguration config, RandomService randSvc)
+        public App(IConfiguration config, RandomService randSvc, SumOpService sumSvc)
         {
             _config = config;
             _randSvc = randSvc;
+            _sumSvc = sumSvc;
         }
 
         /// <summary>
@@ -24,10 +26,8 @@ namespace Net5ConaoleApp
         /// </summary>
         public void Run(string[] args)
         {
-            Console.WriteLine("App => Yes, 成功執行了。");
-
-            // 測試 services injection
             Console.WriteLine($"App => {_config.GetConnectionString("DefaultConnection")}");
+            Console.WriteLine($"App => {_sumSvc.Sum(234, 432)}");
             Console.WriteLine($"App => {_randSvc.GetRandomGuid()}");
 
             Console.WriteLine("Press any key to continue.");

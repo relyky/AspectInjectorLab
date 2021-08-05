@@ -27,7 +27,8 @@ namespace Net5ConaoleApp
                 .ConfigureServices(ConfigureServices)
                 .Build();
 
-            AppDomain.CurrentDomain.SetData("App:Host", host);
+            /// 註冊 IServiceProvider 備用
+            AOP.ServiceActivator.Configure(host.Services);
 
             return host;
         }
@@ -36,6 +37,7 @@ namespace Net5ConaoleApp
         {
             // 在此註冊 services 
             services.AddScoped<Services.RandomService>();
+            services.AddScoped<Services.SumOpService>();
         }
     }
 }
