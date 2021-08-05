@@ -1,7 +1,5 @@
 ﻿using AspectInjector.Broker;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -12,28 +10,36 @@ using System.Threading.Tasks;
 namespace Net5ConaoleApp.AOP
 {
     [AttributeUsage(AttributeTargets.Class)]
-    [Aspect(Scope.Global)]
-    [Injection(typeof(CatchAndLog))]
-    public class CatchAndLog : Attribute
+    [Injection(typeof(CatchAndLogAspect))]
+    public class CatchAndLogAttribute : Attribute
     {
-        readonly ILogger<CatchAndLog> _logger;
+        public string Title { get; init; }
+    }
 
-        public CatchAndLog()
-        {            
+    [Aspect(Scope.Global)]
+    public class CatchAndLogAspect
+    {
+        readonly ILogger<CatchAndLogAspect> _logger;
+
+        public CatchAndLogAspect()
+        {
             using (var serviceScope = ServiceActivator.GetScope())
             {
                 var services = serviceScope.ServiceProvider;
-                _logger = services.GetRequiredService<ILogger<CatchAndLog>>();
+                _logger = services.GetRequiredService<ILogger<CatchAndLogAspect>>();
             }
         }
 
         [Advice(Kind.Before, Targets = Target.Method)] // you can have also After (async-aware), and Around(Wrap/Instead) kinds
         public void Begore([Argument(Source.Name)] string name,
             [Argument(Source.Instance)] object instane,
+            [Argument(Source.Triggers)] Attribute[] triggers,
             [Argument(Source.Arguments)] object[] args)
         {
+            var attr = triggers.FirstOrDefault(c => c is CatchAndLogAttribute) as CatchAndLogAttribute;
+
             //※ log before
-            _logger.LogInformation($"[Before] {instane.GetType().Name}.{name} => args[{args.Length}]");
+            _logger.LogInformation($"[Before] {attr?.Title} {instane.GetType().Name}.{name} => args[{args.Length}]");
         }
 
         [Advice(Kind.After, Targets = Target.Method)]

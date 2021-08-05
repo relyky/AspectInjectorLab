@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Net5ConaoleApp.Services
 {
-    [CatchAndLog]
+    [CatchAndLog(Title = "亂數產生器")]
     class RandomService
     {
         readonly IConfiguration _config;

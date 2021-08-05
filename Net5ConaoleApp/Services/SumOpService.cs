@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Net5ConaoleApp.Services
 {
-    [CatchAndLog]
+    [CatchAndLog(Title = "加總器")]
     class SumOpService
     {
         readonly IConfiguration _config;
